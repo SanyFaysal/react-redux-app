@@ -1,10 +1,23 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addBookings } from "../redux/booking/actions";
 
 export default function AddBookingsForm() {
+  const dispatch = useDispatch();
+  const handleBooking = (e) => {
+    e.preventDefault();
+    const from = e.target.from.value;
+    const to = e.target.to.value;
+    const date = e.target.date.value;
+    const guests = e.target.guests.value;
+    const ticketClass = e.target.ticketClass.value;
+    const data = { from, to, date, guests, ticketClass };
+    dispatch(addBookings(data));
+  };
   return (
     <div className="mt-[160px] mx-4 md:mt-[160px] relative">
       <div className="bg-white rounded-md max-w-6xl w-full mx-auto">
-        <form className="first-hero lws-inputform">
+        <form onSubmit={handleBooking} className="first-hero lws-inputform">
           <div className="des-from">
             <p>Destination From</p>
             <div className="flex flex-row">
@@ -113,7 +126,9 @@ export default function AddBookingsForm() {
                 d="M12 4.5v15m7.5-7.5h-15"
               />
             </svg>
-            <span className="text-sm">Book</span>
+            <button type="submit" className="text-sm">
+              Book
+            </button>
           </button>
         </form>
       </div>
