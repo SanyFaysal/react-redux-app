@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
 import BookingRow from "./BookingRow";
 import BookingTableHeader from "./BookingTableHeader";
 
 export default function BookingTable() {
+  const bookings = useSelector((state) => state.bookings);
+  console.log({ bookings });
   return (
     <div className="table-container">
       <table className="booking-table">
@@ -9,7 +12,9 @@ export default function BookingTable() {
           <BookingTableHeader />
         </thead>
         <tbody className="divide-y divide-gray-300/20" id="lws-previewBooked">
-          <BookingRow />
+          {bookings?.map((booking) => (
+            <BookingRow booking={booking} />
+          ))}
         </tbody>
       </table>
     </div>

@@ -7,10 +7,12 @@ const initialState = {
 const bookingReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOKINGS:
-      return {
-        ...state,
-        bookings: [...state.bookings, action.payload],
-      };
+      if (state.bookings?.length < 3) {
+        return {
+          ...state,
+          bookings: [...state.bookings, action.payload],
+        };
+      }
 
     default:
       return {

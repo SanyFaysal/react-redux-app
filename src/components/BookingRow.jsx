@@ -1,24 +1,24 @@
 import React from "react";
 
-export default function BookingRow() {
+export default function BookingRow({ booking }) {
   return (
     <tr className="lws-bookedTable text-black">
       <td className="px-6 py-4">
         <div className="flex items-center space-x-3">
-          <p className="lws-bookedFrom">Dhaka</p>
+          <p className="lws-bookedFrom">{booking?.from}</p>
         </div>
       </td>
       <td className="px-6 py-4">
-        <p className="lws-bookedTo">Sylhet</p>
+        <p className="lws-bookedTo">{booking?.to}</p>
       </td>
       <td className="px-6 py-4 text-center">
-        <p className="lws-bookedDate">11-01-23</p>
+        <p className="lws-bookedDate">{booking?.date}</p>
       </td>
       <td className="px-6 py-4 text-center">
-        <p className="lws-bookedGustes">2</p>
+        <p className="lws-bookedGustes">{booking?.guests}</p>
       </td>
       <td className="px-6 py-4 text-center">
-        <span className="lws-bookedClass"> Business </span>
+        <span className="lws-bookedClass"> {booking?.ticketClass} </span>
       </td>
       <td className="px-6 py-4 text-center">
         <div className="flex justify-center gap-4">
